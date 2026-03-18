@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.7; }
+}
+
+@keyframes fadeUpButtons {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background: transparent;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+.navbar-center {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-center a {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar-center a:hover {
+  color: #fff;
+}
+
+.navbar-center a svg {
+  width: 14px;
+  height: 14px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-right .demo-link {
+  display: none;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navbar-right .demo-link:hover {
+  color: #fff;
+}
+
+.btn-get-started {
+  font-family: 'Instrument Sans', sans-serif;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-get-started:hover {
+  opacity: 0.9;
+}
+
+/* ── Hero Section ── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Background Video */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+/* Video Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+/* Decorative Gradients */
+.gradient-tl {
+  position: absolute;
+  top: -20%;
+  left: 20%;
+  width: 600px;
+  height: 600px;
+  background: rgba(30, 58, 138, 0.2);
+  border-radius: 50%;
+  filter: blur(120px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.gradient-br {
+  position: absolute;
+  bottom: -10%;
+  right: 20%;
+  width: 500px;
+  height: 500px;
+  background: rgba(49, 46, 129, 0.2);
+  border-radius: 50%;
+  filter: blur(120px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 64rem;
+  margin: 0 auto;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 48px;
+  padding: 0 24px;
+}
+
+/* Pre-headline */
+.pre-headline {
+  font-family: 'Instrument Serif', serif;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #fff;
+  animation: fadeUp 0.6s ease both;
+}
+
+/* Main headline */
+.main-headline {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  background: linear-gradient(to bottom, #fff, #fff 50%, #b4c0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: scaleIn 0.6s ease 0.2s both;
+}
+
+/* Subheadline */
+.subheadline {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #fff;
+  max-width: 36rem;
+  animation: fadeIn 0.6s ease 0.4s both;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: fadeUpButtons 0.5s ease 0.6s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 24px;
+  background: #fff;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.btn-primary-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0a0400;
+  white-space: nowrap;
+}
+
+.btn-primary-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #3054ff;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover .btn-primary-arrow {
+  background: #2040e0;
+}
+
+.btn-primary-arrow svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: color 0.2s, background 0.2s;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-secondary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.btn-secondary:hover svg {
+  transform: translateX(4px);
+}
+
+/* ── Responsive ── */
+@media (min-width: 640px) {
+  .pre-headline {
+    font-size: 48px;
+  }
+
+  .main-headline {
+    font-size: 96px;
+  }
+
+  .subheadline {
+    font-size: 20px;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+  }
+
+  .navbar-right .demo-link {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-center {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pre-headline {
+    font-size: 48px;
+  }
+
+  .main-headline {
+    font-size: 136px;
+  }
+}
