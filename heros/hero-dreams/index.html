@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velorah — Where dreams rise through the silence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="nav">
+        <div class="nav-logo">Velorah<sup>&reg;</sup></div>
+        <nav class="nav-links">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Studio</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Journal</a>
+            <a href="#" class="nav-link">Reach Us</a>
+        </nav>
+        <a href="#" class="btn-nav liquidGlass-wrapper">
+            <div class="liquidGlass-effect"></div>
+            <div class="liquidGlass-tint"></div>
+            <div class="liquidGlass-shine"></div>
+            <span class="liquidGlass-text">Begin Journey</span>
+        </a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-heading">Where <span class="text-muted">dreams</span> rise <span class="text-muted">through</span> the silence.</h1>
+            <p class="hero-sub">
+                We're designing tools for deep thinkers, bold creators, and quiet rebels. Amid the chaos, we build digital spaces for sharp focus and inspired work.
+            </p>
+            <a href="#" class="btn-hero liquidGlass-wrapper">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <span class="liquidGlass-text">Begin Journey</span>
+            </a>
+        </div>
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="video-bg.mp4" type="video/mp4">
+        </video>
+    </section>
+
+    <svg style="position:absolute;width:0;height:0">
+        <filter id="glass-distortion">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="5" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+
+</body>
+</html>
