@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Website Builder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%233054ff'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <line x1="12" y1="2" x2="12" y2="6"/>
+        <line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="6" y2="12"/>
+        <line x1="18" y1="12" x2="22" y2="12"/>
+        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
+        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+      </svg>
+    </a>
+
+    <div class="navbar-center">
+      <a href="#">Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+      <a href="#">Customer Stories</a>
+      <a href="#">Resources</a>
+      <a href="#">Pricing</a>
+    </div>
+
+    <div class="navbar-right">
+      <a href="#" class="demo-link">Book A Demo</a>
+      <button class="btn-get-started">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Background Video -->
+    <video
+      id="hero-video"
+      class="hero-video"
+      muted
+      loop
+      playsinline
+      style="background: #0a0e2a;"
+    ></video>
+
+    <!-- Video Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Decorative Gradients -->
+    <div class="gradient-tl"></div>
+    <div class="gradient-br"></div>
+
+    <!-- Content -->
+    <div class="hero-content">
+      <p class="pre-headline">Design at the speed of thought</p>
+
+      <h1 class="main-headline">Build Faster</h1>
+
+      <p class="subheadline">Create fully functional, SEO-optimized websites in seconds with our advanced AI engine.</p>
+
+      <div class="cta-buttons">
+        <a href="#" class="btn-primary">
+          <span class="btn-primary-text">Start Building Free</span>
+          <span class="btn-primary-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <a href="#" class="btn-secondary">
+          See Examples
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js"></script>
+  <script>
+    const video = document.getElementById('hero-video');
+    const videoSrc = 'https://stream.mux.com/So3YlCA0100r1Qe00SlU76XgJEQHW781hoLJGpsPy5gbTM.m3u8';
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(e => console.log('Auto-play prevented:', e));
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = videoSrc;
+      video.addEventListener('loadedmetadata', () => {
+        video.play().catch(e => console.log('Auto-play prevented:', e));
+      });
+    }
+  </script>
+
+</body>
+</html>
