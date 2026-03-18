@@ -1,0 +1,253 @@
+:root {
+    --ballerina: #ed8a9e;
+    --cobalt: #3567c8;
+    --sunshade: #E8AB35;
+    --emerald: #3A9B62;
+    --lavender: #9B8AC8;
+    --terracotta: #BE6235;
+    --mint: #78CBB0;
+    --coral: #DA7468;
+    --sand: #C8AC78;
+    --slate: #808E9C;
+    --blush: #EDB4C8;
+    --forest: #304F40;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: url('./bg.jpg') center / cover no-repeat fixed;
+    padding: 2rem;
+}
+
+.paper {
+    background: #F5F0E8;
+    border-radius: 18px;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.12),
+        0 1px 4px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.18));
+}
+
+.swatch {
+    background: var(--swatch);
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: grab;
+    transition: transform 300ms ease;
+    filter: url(#soften);
+}
+
+.swatch:hover {
+    cursor: pointer;
+    transform: scale(1.2) translateY(-17px);
+}
+
+.swatch p {
+    font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+    line-height: 1.45;
+    font-weight: 500;
+}
+
+.label {
+    font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+/* Dark swatches get light text */
+.card-2 .swatch,
+.card-4 .swatch,
+.card-6 .swatch,
+.card-8 .swatch,
+.card-10 .swatch,
+.card-12 .swatch {
+    color: #FFFFFF;
+}
+
+/* Light swatches get dark text */
+.card-1 .swatch,
+.card-3 .swatch,
+.card-5 .swatch,
+.card-7 .swatch,
+.card-9 .swatch,
+.card-11 .swatch {
+    color: #2A2520;
+}
+
+/* Torn paper clip-paths — soft, rounded waves */
+.card-1 .swatch {
+    clip-path: polygon(
+        1% 2%, 15% 0.5%, 30% 2%, 50% 0%, 70% 1.5%, 85% 0.5%, 99% 2%,
+        100% 1%, 99% 15%, 100% 35%, 98.5% 55%, 100% 75%, 99% 90%, 100% 99%,
+        99% 100%, 85% 98.5%, 65% 100%, 45% 98%, 25% 100%, 10% 98.5%, 1% 100%,
+        0% 99%, 1.5% 80%, 0% 60%, 1% 40%, 0% 20%, 1.5% 8%
+    );
+}
+
+.card-2 .swatch {
+    clip-path: polygon(
+        0% 1.5%, 12% 0%, 28% 1.5%, 48% 0%, 68% 2%, 88% 0.5%, 100% 1%,
+        99.5% 10%, 100% 28%, 98.5% 48%, 100% 68%, 99% 85%, 100% 98%,
+        98% 100%, 80% 98.5%, 60% 100%, 40% 98%, 20% 100%, 8% 98%, 0% 100%,
+        1% 88%, 0% 65%, 1.5% 45%, 0% 25%, 1% 10%
+    );
+}
+
+.card-3 .swatch {
+    clip-path: polygon(
+        2% 0%, 18% 1.5%, 35% 0%, 55% 2%, 75% 0.5%, 90% 1.5%, 100% 0%,
+        99% 12%, 100% 30%, 99% 50%, 100% 70%, 98.5% 88%, 100% 100%,
+        98.5% 99%, 82% 100%, 62% 98%, 42% 100%, 22% 98.5%, 8% 100%, 0% 98.5%,
+        1% 82%, 0% 62%, 1.5% 42%, 0% 22%, 1% 8%
+    );
+}
+
+.card-4 .swatch {
+    clip-path: polygon(
+        0% 1%, 10% 0%, 25% 2%, 45% 0%, 65% 1.5%, 82% 0%, 100% 1.5%,
+        99% 15%, 100% 32%, 98.5% 52%, 100% 72%, 99% 88%, 100% 100%,
+        99% 98.5%, 78% 100%, 58% 98%, 38% 100%, 18% 98.5%, 5% 100%, 0% 99%,
+        1.5% 85%, 0% 65%, 1% 45%, 0% 25%, 1.5% 10%
+    );
+}
+
+.card-5 .swatch {
+    clip-path: polygon(
+        1% 0%, 20% 1.5%, 40% 0%, 60% 2%, 80% 0.5%, 95% 1%, 100% 0%,
+        100% 12%, 98.5% 30%, 100% 50%, 99% 70%, 100% 88%, 99% 100%,
+        97% 99%, 75% 100%, 55% 98%, 35% 100%, 15% 98.5%, 2% 100%, 0% 99%,
+        1% 78%, 0% 55%, 1.5% 35%, 0% 15%, 1% 5%
+    );
+}
+
+.card-6 .swatch {
+    clip-path: polygon(
+        0% 2%, 14% 0%, 32% 1.5%, 52% 0%, 72% 1%, 90% 0.5%, 100% 2%,
+        98.5% 15%, 100% 35%, 99% 55%, 100% 75%, 98.5% 92%, 100% 100%,
+        98% 98.5%, 80% 100%, 60% 98%, 40% 100%, 20% 98.5%, 5% 99%, 0% 100%,
+        1.5% 85%, 0% 60%, 1% 38%, 0% 18%, 0.5% 8%
+    );
+}
+
+.card-7 .swatch {
+    clip-path: polygon(
+        0.5% 1%, 16% 0%, 34% 2%, 54% 0.5%, 74% 1.5%, 92% 0%, 100% 1%,
+        99% 18%, 100% 38%, 98.5% 58%, 100% 78%, 99.5% 92%, 100% 100%,
+        98% 100%, 78% 98.5%, 58% 100%, 38% 98%, 18% 100%, 4% 98.5%, 0% 100%,
+        1% 82%, 0% 58%, 1.5% 38%, 0% 18%, 1% 6%
+    );
+}
+
+.card-8 .swatch {
+    clip-path: polygon(
+        2% 0%, 22% 1.5%, 42% 0%, 62% 2%, 82% 0.5%, 96% 1.5%, 100% 0%,
+        100% 15%, 98.5% 35%, 100% 55%, 99% 75%, 100% 90%, 99% 100%,
+        96% 98.5%, 76% 100%, 56% 98%, 36% 100%, 16% 98%, 2% 100%, 0% 99%,
+        1% 80%, 0% 55%, 1.5% 32%, 0% 12%, 1.5% 4%
+    );
+}
+
+.card-9 .swatch {
+    clip-path: polygon(
+        0% 0.5%, 18% 2%, 38% 0%, 58% 1.5%, 78% 0%, 94% 1%, 100% 0.5%,
+        99.5% 14%, 100% 34%, 99% 54%, 100% 74%, 98.5% 90%, 100% 99%,
+        98% 100%, 82% 98%, 62% 100%, 42% 98.5%, 22% 100%, 6% 98%, 0% 100%,
+        1% 85%, 0% 62%, 1.5% 40%, 0% 20%, 0.5% 6%
+    );
+}
+
+.card-10 .swatch {
+    clip-path: polygon(
+        1.5% 0%, 20% 1%, 38% 0%, 55% 2%, 72% 0.5%, 88% 1.5%, 100% 0%,
+        99% 12%, 100% 32%, 98.5% 52%, 100% 72%, 99% 90%, 100% 100%,
+        97% 98.5%, 77% 100%, 57% 98%, 37% 100%, 17% 98.5%, 3% 99%, 0% 100%,
+        1% 82%, 0% 58%, 1.5% 35%, 0% 15%, 1% 4%
+    );
+}
+
+.card-11 .swatch {
+    clip-path: polygon(
+        0% 1%, 15% 0%, 32% 1.5%, 50% 0%, 68% 2%, 85% 0.5%, 100% 1.5%,
+        99% 16%, 100% 36%, 98.5% 56%, 100% 76%, 99.5% 92%, 100% 99%,
+        98.5% 100%, 80% 98%, 60% 100%, 40% 98.5%, 20% 100%, 5% 98%, 0% 100%,
+        1.5% 80%, 0% 56%, 1% 34%, 0% 14%, 0.5% 5%
+    );
+}
+
+.card-12 .swatch {
+    clip-path: polygon(
+        0.5% 2%, 18% 0%, 36% 1.5%, 56% 0.5%, 76% 1.5%, 92% 0%, 100% 2%,
+        98.5% 18%, 100% 40%, 99% 60%, 100% 80%, 99% 94%, 100% 100%,
+        99% 98%, 78% 100%, 55% 98.5%, 35% 100%, 15% 98%, 2% 100%, 0% 99%,
+        1% 78%, 0% 52%, 1.5% 30%, 0% 12%, 1% 4%
+    );
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translate(var(--tx1), var(--ty1)) rotate(var(--rot)); }
+    33%      { transform: translate(var(--tx2), var(--ty2)) rotate(var(--rot2)); }
+    66%      { transform: translate(var(--tx3), var(--ty3)) rotate(var(--rot)); }
+}
+
+.card {
+    animation: float var(--dur) ease-in-out infinite;
+    animation-delay: var(--delay);
+    transform: rotate(var(--rot));
+}
+
+/* Each card drifts in its own path, overlapping neighbours */
+.card-1  { --rot: -2.0deg; --rot2: -1.2deg; --tx1: 0px;   --ty1: 0px;    --tx2: 6px;   --ty2: -14px; --tx3: -4px;  --ty3: -6px;  --dur: 6.0s; --delay: 0s; }
+.card-2  { --rot: 1.4deg;  --rot2: 2.0deg;  --tx1: 0px;   --ty1: 0px;    --tx2: -8px;  --ty2: -12px; --tx3: 5px;   --ty3: -4px;  --dur: 6.8s; --delay: -1.2s; }
+.card-3  { --rot: -0.8deg; --rot2: -1.5deg; --tx1: 0px;   --ty1: 0px;    --tx2: 4px;   --ty2: -16px; --tx3: -6px;  --ty3: -8px;  --dur: 7.2s; --delay: -2.5s; }
+.card-4  { --rot: 1.6deg;  --rot2: 0.8deg;  --tx1: 0px;   --ty1: 0px;    --tx2: -5px;  --ty2: -10px; --tx3: 7px;   --ty3: -5px;  --dur: 6.4s; --delay: -0.8s; }
+.card-5  { --rot: 1.0deg;  --rot2: 1.8deg;  --tx1: 0px;   --ty1: 0px;    --tx2: 7px;   --ty2: -13px; --tx3: -3px;  --ty3: -7px;  --dur: 7.0s; --delay: -3.1s; }
+.card-6  { --rot: -1.4deg; --rot2: -0.6deg; --tx1: 0px;   --ty1: 0px;    --tx2: -6px;  --ty2: -15px; --tx3: 4px;   --ty3: -5px;  --dur: 6.5s; --delay: -1.8s; }
+.card-7  { --rot: 0.6deg;  --rot2: 1.3deg;  --tx1: 0px;   --ty1: 0px;    --tx2: 5px;   --ty2: -11px; --tx3: -7px;  --ty3: -6px;  --dur: 7.1s; --delay: -4.0s; }
+.card-8  { --rot: -1.2deg; --rot2: -1.8deg; --tx1: 0px;   --ty1: 0px;    --tx2: -4px;  --ty2: -14px; --tx3: 6px;   --ty3: -3px;  --dur: 6.2s; --delay: -2.2s; }
+.card-9  { --rot: -0.5deg; --rot2: 0.3deg;  --tx1: 0px;   --ty1: 0px;    --tx2: 8px;   --ty2: -12px; --tx3: -5px;  --ty3: -8px;  --dur: 6.7s; --delay: -0.5s; }
+.card-10 { --rot: 1.3deg;  --rot2: 0.5deg;  --tx1: 0px;   --ty1: 0px;    --tx2: -7px;  --ty2: -16px; --tx3: 3px;   --ty3: -4px;  --dur: 7.3s; --delay: -3.5s; }
+.card-11 { --rot: -0.9deg; --rot2: -1.6deg; --tx1: 0px;   --ty1: 0px;    --tx2: 5px;   --ty2: -10px; --tx3: -6px;  --ty3: -7px;  --dur: 6.6s; --delay: -1.5s; }
+.card-12 { --rot: 1.7deg;  --rot2: 1.0deg;  --tx1: 0px;   --ty1: 0px;    --tx2: -6px;  --ty2: -13px; --tx3: 4px;   --ty3: -5px;  --dur: 6.3s; --delay: -2.8s; }
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

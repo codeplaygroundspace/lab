@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true">
+      <filter id="soften">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+        <feComponentTransfer in="blur" result="sharp">
+          <feFuncA type="table" tableValues="0 0 1 1" />
+        </feComponentTransfer>
+        <feComposite in="SourceGraphic" in2="sharp" operator="in" />
+      </filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+        <feColorMatrix in="noise" type="saturate" values="0" result="mono" />
+        <feBlend in="SourceGraphic" in2="mono" mode="multiply" result="blend" />
+        <feComponentTransfer in="blend">
+          <feFuncA type="linear" slope="1" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+
+    <div class="surface">
+      <div class="grid">
+
+        <div class="card card-1">
+          <div class="swatch swatch-linen">
+            <p>The quiet hum of a Sunday tablecloth — familiar, honest, never trying too hard</p>
+            <span class="label">Linen</span>
+          </div>
+        </div>
+
+        <div class="card card-2">
+          <div class="swatch swatch-marble">
+            <p>Cold patience carved by pressure and time, every vein a river that once was</p>
+            <span class="label">Marble</span>
+          </div>
+        </div>
+
+        <div class="card card-3">
+          <div class="swatch swatch-woodgrain">
+            <p>Years pressed into rings — run your thumb across and feel the slow turning of seasons</p>
+            <span class="label">Woodgrain</span>
+          </div>
+        </div>
+
+        <div class="card card-4">
+          <div class="swatch swatch-silk">
+            <p>Water pretending to be fabric — it slips through your fingers before you know it was there</p>
+            <span class="label">Raw Silk</span>
+          </div>
+        </div>
+
+        <div class="card card-5">
+          <div class="swatch swatch-concrete">
+            <p>Rough and unapologetic, the skin of every city — still warm from the afternoon sun</p>
+            <span class="label">Concrete</span>
+          </div>
+        </div>
+
+        <div class="card card-6">
+          <div class="swatch swatch-wool">
+            <p>A hug you can wear — thick, imperfect, holding warmth like a promise kept</p>
+            <span class="label">Warm Wool</span>
+          </div>
+        </div>
+
+        <div class="card card-7">
+          <div class="swatch swatch-terrazzo">
+            <p>Scattered confetti trapped in stone — the floor remembers every celebration</p>
+            <span class="label">Terrazzo</span>
+          </div>
+        </div>
+
+        <div class="card card-8">
+          <div class="swatch swatch-brushed">
+            <p>Light caught in parallel lines — cool under your palm, humming with quiet precision</p>
+            <span class="label">Brushed Metal</span>
+          </div>
+        </div>
+
+        <div class="card card-9">
+          <div class="swatch swatch-paper">
+            <p>Soft enough to fold, strong enough to hold a century of someone's handwriting</p>
+            <span class="label">Old Paper</span>
+          </div>
+        </div>
+
+        <div class="card card-10">
+          <div class="swatch swatch-wetstone">
+            <p>Dark and gleaming after rain — the earth showing you what it looks like underneath</p>
+            <span class="label">Wet Stone</span>
+          </div>
+        </div>
+
+        <div class="card card-11">
+          <div class="swatch swatch-corduroy">
+            <p>Ridges like tiny roads running side by side — soft valleys between every line</p>
+            <span class="label">Corduroy</span>
+          </div>
+        </div>
+
+        <div class="card card-12">
+          <div class="swatch swatch-sand">
+            <p>A million tiny worlds shifting underfoot — always moving, never the same shape twice</p>
+            <span class="label">Sand</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

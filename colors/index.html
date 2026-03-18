@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colours</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true">
+      <filter id="soften">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+        <feComponentTransfer in="blur" result="sharp">
+          <feFuncA type="table" tableValues="0 0 1 1" />
+        </feComponentTransfer>
+        <feComposite in="SourceGraphic" in2="sharp" operator="in" />
+      </filter>
+    </svg>
+    <div class="paper">
+      <div class="grid">
+
+        <div class="card card-1">
+          <div class="swatch" style="--swatch:var(--ballerina)">
+            <p>Soft warmth that wraps around you like morning light filtering through curtains</p>
+            <span class="label">Ballerina</span>
+          </div>
+        </div>
+
+        <div class="card card-2">
+          <div class="swatch" style="--swatch:var(--cobalt)">
+            <p>Deep trust and quiet confidence — the colour of certainty</p>
+            <span class="label">Cobalt</span>
+          </div>
+        </div>
+
+        <div class="card card-3">
+          <div class="swatch" style="--swatch:var(--sunshade)">
+            <p>Bold optimism radiating outward, impossible to ignore</p>
+            <span class="label">Sunshade</span>
+          </div>
+        </div>
+
+        <div class="card card-4">
+          <div class="swatch" style="--swatch:var(--emerald)">
+            <p>Growth in every direction, rooted and reaching</p>
+            <span class="label">Emerald</span>
+          </div>
+        </div>
+
+        <div class="card card-5">
+          <div class="swatch" style="--swatch:var(--lavender)">
+            <p>Calm complexity, a whisper of something deeper beneath the softness</p>
+            <span class="label">Lavender</span>
+          </div>
+        </div>
+
+        <div class="card card-6">
+          <div class="swatch" style="--swatch:var(--terracotta)">
+            <p>Earth memory — sun-baked clay holding centuries of stories</p>
+            <span class="label">Terracotta</span>
+          </div>
+        </div>
+
+        <div class="card card-7">
+          <div class="swatch" style="--swatch:var(--mint)">
+            <p>Fresh starts and clean slates, cool to the touch</p>
+            <span class="label">Mint</span>
+          </div>
+        </div>
+
+        <div class="card card-8">
+          <div class="swatch" style="--swatch:var(--coral)">
+            <p>Vivid and alive, the pulse of a reef at golden hour</p>
+            <span class="label">Coral</span>
+          </div>
+        </div>
+
+        <div class="card card-9">
+          <div class="swatch" style="--swatch:var(--sand)">
+            <p>Quiet warmth underfoot, endless and patient</p>
+            <span class="label">Sand</span>
+          </div>
+        </div>
+
+        <div class="card card-10">
+          <div class="swatch" style="--swatch:var(--slate)">
+            <p>Steady and unshakable — the backbone colour</p>
+            <span class="label">Slate</span>
+          </div>
+        </div>
+
+        <div class="card card-11">
+          <div class="swatch" style="--swatch:var(--blush)">
+            <p>A flush of feeling, brief and beautiful</p>
+            <span class="label">Blush</span>
+          </div>
+        </div>
+
+        <div class="card card-12">
+          <div class="swatch" style="--swatch:var(--forest)">
+            <p>Deep canopy silence where everything breathes slowly</p>
+            <span class="label">Forest</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

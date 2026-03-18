@@ -1,0 +1,537 @@
+:root {
+    --linen: #E8DDD3;
+    --marble: #F0EDE8;
+    --woodgrain: #A07850;
+    --silk: #E8D8E0;
+    --concrete: #B0A8A0;
+    --wool: #C8785A;
+    --terrazzo: #F0E8E0;
+    --brushed: #C0C4C8;
+    --paper: #E8D8C0;
+    --wetstone: #505850;
+    --corduroy: #8B6858;
+    --sand: #D8C8A0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Linen-like background */
+    background-color: #D8D0C8;
+    transition: background-color 600ms ease;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.02) 3px,
+            rgba(0, 0, 0, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.015) 3px,
+            rgba(0, 0, 0, 0.015) 4px
+        );
+    padding: 2rem;
+}
+
+.surface {
+    background: rgba(245, 242, 238, 0.92);
+    border-radius: 18px;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.1),
+        0 1px 4px rgba(0, 0, 0, 0.06);
+    max-width: 1200px;
+    width: 100%;
+    backdrop-filter: blur(8px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.15));
+}
+
+.swatch {
+    aspect-ratio: 4 / 5;
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: grab;
+    transition: transform 400ms ease;
+    filter: url(#soften);
+    position: relative;
+    overflow: hidden;
+}
+
+.swatch:hover {
+    cursor: pointer;
+    transform: scale(1.08) translateY(-8px);
+}
+
+.swatch p {
+    font-family: "Manrope", system-ui, sans-serif;
+    font-size: clamp(0.82rem, 1.25vw, 1.05rem);
+    line-height: 1.55;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+}
+
+.label {
+    font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Text colors ── */
+.swatch-marble,
+.swatch-linen,
+.swatch-silk,
+.swatch-terrazzo,
+.swatch-paper,
+.swatch-sand {
+    color: #2A2520;
+}
+
+.swatch-woodgrain,
+.swatch-concrete,
+.swatch-wool,
+.swatch-brushed,
+.swatch-wetstone,
+.swatch-corduroy {
+    color: #F5F0E8;
+}
+
+/* ── Texture patterns ── */
+
+/* 1. Linen — crosshatch weave */
+.swatch-linen {
+    background-color: var(--linen);
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(160, 140, 120, 0.12) 2px,
+            rgba(160, 140, 120, 0.12) 3px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(160, 140, 120, 0.1) 2px,
+            rgba(160, 140, 120, 0.1) 3px
+        );
+}
+
+/* 2. Marble — diagonal veins */
+.swatch-marble {
+    background-color: var(--marble);
+    background-image:
+        repeating-linear-gradient(
+            125deg,
+            transparent,
+            transparent 40px,
+            rgba(180, 170, 160, 0.15) 40px,
+            rgba(180, 170, 160, 0.25) 42px,
+            transparent 44px
+        ),
+        repeating-linear-gradient(
+            115deg,
+            transparent,
+            transparent 80px,
+            rgba(160, 150, 140, 0.1) 80px,
+            rgba(160, 150, 140, 0.18) 82px,
+            transparent 85px
+        ),
+        radial-gradient(
+            ellipse at 30% 60%,
+            rgba(200, 195, 188, 0.3),
+            transparent 60%
+        );
+}
+
+/* 3. Woodgrain — horizontal flowing lines */
+.swatch-woodgrain {
+    background-color: var(--woodgrain);
+    background-image:
+        repeating-linear-gradient(
+            2deg,
+            transparent,
+            transparent 4px,
+            rgba(60, 35, 15, 0.18) 4px,
+            rgba(60, 35, 15, 0.18) 5px
+        ),
+        repeating-linear-gradient(
+            178deg,
+            transparent,
+            transparent 12px,
+            rgba(80, 45, 20, 0.12) 12px,
+            rgba(80, 45, 20, 0.12) 14px
+        ),
+        radial-gradient(
+            ellipse 300% 50% at 50% 50%,
+            rgba(120, 80, 40, 0.15),
+            transparent
+        );
+}
+
+/* 4. Raw Silk — fine diagonal shimmer */
+.swatch-silk {
+    background-color: var(--silk);
+    background-image:
+        repeating-linear-gradient(
+            150deg,
+            transparent,
+            transparent 1px,
+            rgba(255, 255, 255, 0.25) 1px,
+            rgba(255, 255, 255, 0.25) 2px
+        ),
+        repeating-linear-gradient(
+            30deg,
+            transparent,
+            transparent 1px,
+            rgba(200, 180, 190, 0.1) 1px,
+            rgba(200, 180, 190, 0.1) 2px
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.15),
+            transparent 40%,
+            rgba(255, 255, 255, 0.1) 60%,
+            transparent
+        );
+}
+
+/* 5. Concrete — speckled rough surface */
+.swatch-concrete {
+    background-color: var(--concrete);
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(80, 75, 70, 0.15) 1px, transparent 1px),
+        radial-gradient(circle at 60% 70%, rgba(80, 75, 70, 0.12) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, rgba(80, 75, 70, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(80, 75, 70, 0.14) 1px, transparent 1px),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 8px,
+            rgba(90, 85, 80, 0.04) 8px,
+            rgba(90, 85, 80, 0.04) 9px
+        );
+    background-size: 11px 13px, 17px 19px, 13px 11px, 19px 17px, 100% 100%;
+}
+
+/* 6. Warm Wool — thick knit rows */
+.swatch-wool {
+    background-color: var(--wool);
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 6px,
+            rgba(180, 100, 60, 0.2) 6px,
+            rgba(180, 100, 60, 0.2) 7px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 4px,
+            rgba(160, 80, 50, 0.1) 4px,
+            rgba(160, 80, 50, 0.1) 5px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 13px,
+            rgba(200, 120, 80, 0.15) 13px,
+            rgba(200, 120, 80, 0.15) 14px
+        );
+}
+
+/* 7. Terrazzo — scattered chips */
+.swatch-terrazzo {
+    background-color: var(--terrazzo);
+    background-image:
+        radial-gradient(ellipse 8px 6px at 15% 25%, rgba(200, 120, 100, 0.4), transparent),
+        radial-gradient(ellipse 6px 9px at 45% 15%, rgba(120, 140, 130, 0.35), transparent),
+        radial-gradient(ellipse 7px 5px at 75% 35%, rgba(180, 160, 120, 0.4), transparent),
+        radial-gradient(ellipse 5px 8px at 25% 65%, rgba(100, 120, 140, 0.3), transparent),
+        radial-gradient(ellipse 9px 6px at 60% 55%, rgba(160, 100, 100, 0.35), transparent),
+        radial-gradient(ellipse 6px 7px at 85% 75%, rgba(140, 160, 120, 0.35), transparent),
+        radial-gradient(ellipse 8px 5px at 35% 85%, rgba(180, 140, 100, 0.3), transparent),
+        radial-gradient(ellipse 5px 9px at 90% 15%, rgba(120, 100, 140, 0.3), transparent),
+        radial-gradient(ellipse 7px 6px at 10% 90%, rgba(200, 160, 140, 0.35), transparent),
+        radial-gradient(ellipse 6px 8px at 55% 80%, rgba(100, 140, 120, 0.3), transparent);
+}
+
+/* 8. Brushed Metal — fine horizontal scratches */
+.swatch-brushed {
+    background-color: var(--brushed);
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 1px,
+            rgba(255, 255, 255, 0.12) 1px,
+            rgba(255, 255, 255, 0.12) 2px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(100, 105, 110, 0.08) 3px,
+            rgba(100, 105, 110, 0.08) 4px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(180, 185, 190, 0.3),
+            rgba(210, 215, 220, 0.1) 30%,
+            rgba(180, 185, 190, 0.2) 60%,
+            rgba(210, 215, 220, 0.15)
+        );
+}
+
+/* 9. Old Paper — aged, slightly mottled */
+.swatch-paper {
+    background-color: var(--paper);
+    background-image:
+        radial-gradient(ellipse at 20% 40%, rgba(180, 150, 100, 0.15), transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(170, 140, 95, 0.12), transparent 40%),
+        radial-gradient(ellipse at 50% 20%, rgba(190, 160, 110, 0.1), transparent 45%),
+        repeating-linear-gradient(
+            3deg,
+            transparent,
+            transparent 20px,
+            rgba(160, 130, 80, 0.04) 20px,
+            rgba(160, 130, 80, 0.04) 21px
+        );
+}
+
+/* 10. Wet Stone — dark, glossy, layered */
+.swatch-wetstone {
+    background-color: var(--wetstone);
+    background-image:
+        linear-gradient(
+            160deg,
+            rgba(255, 255, 255, 0.08),
+            transparent 30%,
+            rgba(255, 255, 255, 0.04) 60%,
+            transparent
+        ),
+        repeating-linear-gradient(
+            140deg,
+            transparent,
+            transparent 15px,
+            rgba(30, 40, 30, 0.2) 15px,
+            rgba(30, 40, 30, 0.2) 16px
+        ),
+        radial-gradient(
+            ellipse at 40% 50%,
+            rgba(70, 80, 70, 0.3),
+            transparent 60%
+        );
+}
+
+/* 11. Corduroy — vertical ridges */
+.swatch-corduroy {
+    background-color: var(--corduroy);
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.06) 2px,
+            transparent 2px,
+            transparent 3px,
+            rgba(0, 0, 0, 0.08) 3px,
+            rgba(0, 0, 0, 0.08) 4px,
+            transparent 4px,
+            transparent 6px
+        );
+}
+
+/* 12. Sand — fine granular dots */
+.swatch-sand {
+    background-color: var(--sand);
+    background-image:
+        radial-gradient(circle 1px at 10% 20%, rgba(180, 150, 80, 0.3) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 30% 50%, rgba(170, 140, 70, 0.25) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 50% 10%, rgba(190, 160, 90, 0.3) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 70% 40%, rgba(160, 130, 60, 0.25) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 90% 70%, rgba(180, 150, 80, 0.28) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 20% 80%, rgba(170, 140, 70, 0.22) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 60% 90%, rgba(190, 160, 90, 0.26) 0.5px, transparent 1px),
+        radial-gradient(circle 1px at 80% 15%, rgba(160, 130, 60, 0.3) 0.5px, transparent 1px);
+    background-size: 7px 9px, 11px 7px, 9px 11px, 13px 9px, 7px 13px, 11px 11px, 9px 7px, 13px 13px;
+}
+
+/* ── Frayed fabric clip-paths ── */
+.card-1 .swatch {
+    clip-path: polygon(
+        0.5% 1.5%, 12% 0.5%, 25% 1.8%, 40% 0%, 55% 1.2%, 72% 0.3%, 88% 1.5%, 100% 0.8%,
+        99.2% 14%, 100% 30%, 98.8% 48%, 100% 65%, 99.5% 82%, 100% 99%,
+        98% 100%, 82% 98.8%, 65% 100%, 48% 98.5%, 30% 100%, 14% 98.8%, 1% 100%,
+        0% 98%, 1.2% 78%, 0% 58%, 0.8% 38%, 0% 18%, 1% 6%
+    );
+}
+
+.card-2 .swatch {
+    clip-path: polygon(
+        0% 0.8%, 15% 0%, 30% 1.5%, 48% 0.3%, 65% 1.8%, 82% 0%, 100% 1.2%,
+        99% 16%, 100% 34%, 99.2% 52%, 100% 70%, 98.8% 86%, 100% 100%,
+        99% 98.5%, 78% 100%, 58% 98%, 38% 100%, 18% 98.8%, 4% 100%, 0% 99%,
+        0.8% 82%, 0% 62%, 1.5% 42%, 0% 22%, 0.5% 8%
+    );
+}
+
+.card-3 .swatch {
+    clip-path: polygon(
+        1.2% 0%, 18% 1.2%, 35% 0%, 52% 1.5%, 70% 0.5%, 86% 1%, 100% 0%,
+        100% 12%, 98.8% 28%, 100% 46%, 99% 64%, 100% 82%, 99.5% 100%,
+        97% 99%, 80% 100%, 60% 98.5%, 40% 100%, 20% 98%, 6% 100%, 0% 99.5%,
+        1% 80%, 0% 58%, 1.2% 36%, 0% 16%, 0.8% 4%
+    );
+}
+
+.card-4 .swatch {
+    clip-path: polygon(
+        0% 1%, 14% 0%, 28% 1.8%, 44% 0%, 60% 1%, 78% 0.5%, 94% 1.5%, 100% 0%,
+        99.5% 18%, 100% 36%, 99% 54%, 100% 72%, 98.8% 88%, 100% 99%,
+        98.5% 100%, 76% 98.8%, 54% 100%, 34% 98%, 14% 100%, 2% 98.5%, 0% 100%,
+        0.5% 84%, 0% 64%, 1% 44%, 0% 24%, 1.2% 10%
+    );
+}
+
+.card-5 .swatch {
+    clip-path: polygon(
+        0.8% 0%, 20% 1.5%, 38% 0%, 56% 1.2%, 74% 0%, 90% 1.8%, 100% 0.5%,
+        100% 14%, 99% 32%, 100% 50%, 98.8% 68%, 100% 84%, 99.5% 100%,
+        96% 98.8%, 74% 100%, 52% 98.5%, 32% 100%, 12% 98%, 0% 100%,
+        1.2% 86%, 0% 66%, 0.8% 46%, 0% 26%, 1.5% 10%
+    );
+}
+
+.card-6 .swatch {
+    clip-path: polygon(
+        0% 0.5%, 16% 1.5%, 34% 0%, 50% 1.8%, 68% 0.3%, 84% 1.2%, 100% 0%,
+        98.8% 15%, 100% 35%, 99.5% 55%, 100% 75%, 99% 92%, 100% 100%,
+        98% 99%, 80% 100%, 62% 98.5%, 42% 100%, 22% 98.8%, 5% 100%, 0% 99%,
+        1% 80%, 0% 55%, 1.5% 34%, 0% 14%, 0.5% 4%
+    );
+}
+
+.card-7 .swatch {
+    clip-path: polygon(
+        1% 1%, 18% 0%, 36% 1.5%, 54% 0.5%, 72% 1.8%, 88% 0%, 100% 1%,
+        99% 18%, 100% 38%, 98.8% 58%, 100% 78%, 99.5% 92%, 100% 99%,
+        97% 100%, 78% 98.8%, 58% 100%, 38% 98%, 18% 100%, 3% 98.5%, 0% 100%,
+        0.8% 82%, 0% 60%, 1.2% 40%, 0% 20%, 0.5% 6%
+    );
+}
+
+.card-8 .swatch {
+    clip-path: polygon(
+        0% 1.5%, 14% 0%, 30% 1.2%, 48% 0%, 66% 1.5%, 82% 0.5%, 96% 1%, 100% 0%,
+        100% 16%, 99% 36%, 100% 56%, 98.5% 76%, 100% 92%, 99.5% 100%,
+        96% 99%, 76% 100%, 56% 98.5%, 36% 100%, 16% 98%, 2% 100%, 0% 99.5%,
+        1.5% 78%, 0% 54%, 0.8% 32%, 0% 12%, 1% 4%
+    );
+}
+
+.card-9 .swatch {
+    clip-path: polygon(
+        0.5% 0%, 16% 1.2%, 32% 0%, 50% 1.5%, 68% 0.5%, 84% 1.8%, 100% 0%,
+        99.5% 14%, 100% 32%, 99.2% 52%, 100% 72%, 98.8% 88%, 100% 100%,
+        98.5% 99%, 80% 100%, 60% 98.5%, 40% 100%, 20% 98%, 4% 100%, 0% 99%,
+        1% 84%, 0% 64%, 1.5% 44%, 0% 24%, 0.5% 8%
+    );
+}
+
+.card-10 .swatch {
+    clip-path: polygon(
+        0% 0.8%, 18% 0%, 36% 1.5%, 54% 0%, 72% 1.2%, 90% 0.5%, 100% 1.5%,
+        98.8% 18%, 100% 38%, 99% 58%, 100% 78%, 99.5% 94%, 100% 100%,
+        98% 98.5%, 78% 100%, 56% 98%, 36% 100%, 16% 98.8%, 2% 99%, 0% 100%,
+        0.8% 80%, 0% 56%, 1.2% 34%, 0% 14%, 1% 4%
+    );
+}
+
+.card-11 .swatch {
+    clip-path: polygon(
+        1.5% 0%, 20% 1%, 38% 0%, 56% 1.8%, 74% 0.3%, 92% 1.2%, 100% 0%,
+        100% 14%, 99% 34%, 100% 54%, 98.8% 74%, 100% 90%, 99% 100%,
+        96% 98.8%, 74% 100%, 52% 98.5%, 32% 100%, 12% 98%, 0% 100%,
+        1.2% 82%, 0% 58%, 0.5% 36%, 0% 16%, 0.8% 5%
+    );
+}
+
+.card-12 .swatch {
+    clip-path: polygon(
+        0% 1.2%, 14% 0%, 32% 1.5%, 50% 0.5%, 70% 1%, 86% 0%, 100% 1.8%,
+        99% 16%, 100% 34%, 99.5% 54%, 100% 74%, 98.8% 90%, 100% 99%,
+        97% 100%, 76% 98.8%, 56% 100%, 36% 98%, 16% 100%, 3% 99%, 0% 100%,
+        0.5% 82%, 0% 60%, 1.5% 40%, 0% 20%, 1% 6%
+    );
+}
+
+/* ── Floating animation ── */
+@keyframes float {
+    0%, 100% { transform: translate(var(--tx1), var(--ty1)) rotate(var(--rot)); }
+    33%      { transform: translate(var(--tx2), var(--ty2)) rotate(var(--rot2)); }
+    66%      { transform: translate(var(--tx3), var(--ty3)) rotate(var(--rot)); }
+}
+
+.card {
+    animation: float var(--dur) ease-in-out infinite;
+    animation-delay: var(--delay);
+    transform: rotate(var(--rot));
+}
+
+.card-1  { --rot: -1.5deg; --rot2: -1.0deg; --tx1: 0px; --ty1: 0px; --tx2: 5px;  --ty2: -12px; --tx3: -3px; --ty3: -5px;  --dur: 6.0s; --delay: 0s; }
+.card-2  { --rot: 1.2deg;  --rot2: 1.6deg;  --tx1: 0px; --ty1: 0px; --tx2: -7px; --ty2: -10px; --tx3: 4px;  --ty3: -4px;  --dur: 6.8s; --delay: -1.4s; }
+.card-3  { --rot: -0.7deg; --rot2: -1.2deg; --tx1: 0px; --ty1: 0px; --tx2: 4px;  --ty2: -14px; --tx3: -5px; --ty3: -6px;  --dur: 7.2s; --delay: -2.8s; }
+.card-4  { --rot: 1.4deg;  --rot2: 0.8deg;  --tx1: 0px; --ty1: 0px; --tx2: -4px; --ty2: -9px;  --tx3: 6px;  --ty3: -4px;  --dur: 6.4s; --delay: -0.6s; }
+.card-5  { --rot: 0.9deg;  --rot2: 1.5deg;  --tx1: 0px; --ty1: 0px; --tx2: 6px;  --ty2: -11px; --tx3: -3px; --ty3: -6px;  --dur: 7.0s; --delay: -3.2s; }
+.card-6  { --rot: -1.2deg; --rot2: -0.5deg; --tx1: 0px; --ty1: 0px; --tx2: -5px; --ty2: -13px; --tx3: 3px;  --ty3: -4px;  --dur: 6.6s; --delay: -1.8s; }
+.card-7  { --rot: 0.5deg;  --rot2: 1.1deg;  --tx1: 0px; --ty1: 0px; --tx2: 4px;  --ty2: -10px; --tx3: -6px; --ty3: -5px;  --dur: 7.4s; --delay: -4.0s; }
+.card-8  { --rot: -1.0deg; --rot2: -1.5deg; --tx1: 0px; --ty1: 0px; --tx2: -3px; --ty2: -12px; --tx3: 5px;  --ty3: -3px;  --dur: 6.2s; --delay: -2.2s; }
+.card-9  { --rot: -0.4deg; --rot2: 0.2deg;  --tx1: 0px; --ty1: 0px; --tx2: 7px;  --ty2: -10px; --tx3: -4px; --ty3: -7px;  --dur: 6.9s; --delay: -0.8s; }
+.card-10 { --rot: 1.1deg;  --rot2: 0.4deg;  --tx1: 0px; --ty1: 0px; --tx2: -6px; --ty2: -14px; --tx3: 3px;  --ty3: -3px;  --dur: 7.1s; --delay: -3.5s; }
+.card-11 { --rot: -0.8deg; --rot2: -1.4deg; --tx1: 0px; --ty1: 0px; --tx2: 4px;  --ty2: -9px;  --tx3: -5px; --ty3: -6px;  --dur: 6.5s; --delay: -1.5s; }
+.card-12 { --rot: 1.5deg;  --rot2: 0.9deg;  --tx1: 0px; --ty1: 0px; --tx2: -5px; --ty2: -11px; --tx3: 4px;  --ty3: -4px;  --dur: 6.3s; --delay: -2.6s; }
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

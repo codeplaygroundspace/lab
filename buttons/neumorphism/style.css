@@ -1,0 +1,131 @@
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background-color: rgba(255, 236, 244, 1);
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+    border-radius: 999vw;
+    background-color: rgba(255, 236, 244, 1);
+    box-shadow:
+        -0.55em -0.55em 1.1em rgba(255, 255, 255, 0.85),
+        0.55em 0.55em 1.1em rgba(210, 160, 185, 0.35);
+    transition: box-shadow 250ms ease, transform 180ms ease;
+    will-change: box-shadow, transform;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.6),
+            rgba(255, 255, 255, 0));
+    opacity: 0.9;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+}
+
+button .button-outer {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 0.22em;
+    transition: transform 180ms ease, box-shadow 250ms ease;
+    will-change: transform, box-shadow;
+    box-shadow: inset 0.08em 0.08em 0.18em rgba(210, 160, 185, 0.28),
+        inset -0.08em -0.08em 0.18em rgba(255, 255, 255, 0.7);
+}
+
+button:hover .button-outer {
+    transform: translateY(0);
+    box-shadow: inset 0.12em 0.12em 0.26em rgba(210, 160, 185, 0.3),
+        inset -0.12em -0.12em 0.26em rgba(255, 255, 255, 0.78);
+}
+
+.button-inner {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1em 1.5em;
+    background-color: rgba(255, 236, 244, 1);
+    transition: box-shadow 250ms ease, transform 180ms ease;
+    will-change: box-shadow, transform;
+    box-shadow:
+        -0.35em -0.35em 0.8em rgba(255, 255, 255, 0.75),
+        0.35em 0.35em 0.8em rgba(210, 160, 185, 0.32);
+}
+
+button:hover .button-inner {
+    transform: scale(0.96);
+    box-shadow:
+        inset 0.16em 0.16em 0.4em rgba(210, 160, 185, 0.22),
+        inset -0.16em -0.16em 0.4em rgba(255, 255, 255, 0.82);
+}
+
+button .button-inner span {
+    position: relative;
+    z-index: 4;
+    font-family: "Inter", sans-serif;
+    letter-spacing: -0.05em;
+    font-weight: 500;
+    color: rgba(124, 55, 86, 0.92);
+    transition: transform 250ms ease;
+    display: block;
+    will-change: transform;
+    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0,
+        rgba(210, 160, 185, 0.28) 0 0.06em 0.18em;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+button:hover .button-inner span {
+    transform: scale(0.99);
+}
+
+button:active .button-inner {
+    transform: scale(0.985);
+    box-shadow:
+        inset 0.25em 0.25em 0.55em rgba(210, 160, 185, 0.3),
+        inset -0.25em -0.25em 0.55em rgba(255, 255, 255, 0.8);
+}
+
+button:hover::after {
+    opacity: 0.95;
+}
+
+button:hover {
+    transform: translateY(0);
+    box-shadow:
+        -0.55em -0.55em 1.1em rgba(255, 255, 255, 0.85),
+        0.55em 0.55em 1.1em rgba(210, 160, 185, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: none;
+    box-shadow:
+        -0.75em -0.75em 1.4em rgba(255, 255, 255, 0.9),
+        0.85em 0.85em 1.55em rgba(210, 160, 185, 0.5),
+        0 0 0 0.18em rgba(255, 182, 213, 0.55);
+}
